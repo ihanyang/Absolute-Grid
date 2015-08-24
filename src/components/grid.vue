@@ -9,10 +9,6 @@
 </template>
 
 <script>
-	var Vue = require("vue")
-
-	Vue.use(require("vue-resource"))
-
 	var _ = require("underscore")
 
 	module.exports = {
@@ -160,71 +156,53 @@
 				var section = []
 
 				this.position.forEach(function (v, i) {
-					/*
-					1. cx ===v.x  Math.abs(v.y - cy)  <= 286 * 2 /3
-
-					2. cy === v.y Math.abs(v.x - cx)  <= 286 * 2 /3
-					
-					3. Math.abs(currentX - v.x) <= 161 * 2 / 3 && Math.abs(currentY - v.y) <= 286 * 2 / 3	
-
-					4.  (currentX === v.x && Math.abs(v.y - currentY) <= 286 * 2 / 3) || (currentY === v.y && Math.abs(v.x - currentX) <= 161 * 2 / 3) || (Math.abs(currentX - v.x) <= 161 * 2 / 3 && Math.abs(currentY - v.y) <= 286 * 2 / 3)
-					*/
-
 					if (_this.index !== v.index) {
 						if ((Math.abs(currentX - v.x) <= (_this.rangeValue * 161) * 1 / 2 && Math.abs(currentY - v.y) <= (_this.rangeValue * 286) * 1 / 2)) {
 							ii = v.index
 
-							//console.log(v.index)
-
-								if (_this.index < v.index) {
-									while (ii > _this.index) {
+							if (_this.index < v.index) {
+								while (ii > _this.index) {
 										
-										Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
-											if (+ v.dataset.index === ii && ! v.dataset.status) {
-												v.style.transform = "translate3d(" + (_this.position[ii - 1].x - _this.left) + "px, " + (_this.position[ii - 1].y - _this.top) + "px, 0px)"
+									Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
+										if (+ v.dataset.index === ii && ! v.dataset.status) {
+											v.style.transform = "translate3d(" + (_this.position[ii - 1].x - _this.left) + "px, " + (_this.position[ii - 1].y - _this.top) + "px, 0px)"
 
-												v.dataset.index = ii - 1
+											v.dataset.index = ii - 1
 
-												v.dataset.status = "moved"
-											}
-										})
+											v.dataset.status = "moved"
+										}
+									})
 
-										ii--
-									}
-								} else {
-									while (ii < _this.index) {
-										
-										Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
-											if (+ v.dataset.index === ii && ! v.dataset.status) {
-												v.style.transform = "translate3d(" + (_this.position[ii + 1].x - _this.left) + "px, " + (_this.position[ii + 1].y - _this.top) + "px, 0px)"
-
-												v.dataset.index = ii + 1
-
-												v.dataset.status = "moved"
-											}
-										})
-
-										ii++
-									}
+									ii--
 								}
+							} else {
+								while (ii < _this.index) {
+										
+									Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
+										if (+ v.dataset.index === ii && ! v.dataset.status) {
+											v.style.transform = "translate3d(" + (_this.position[ii + 1].x - _this.left) + "px, " + (_this.position[ii + 1].y - _this.top) + "px, 0px)"
 
-								//_this.moveStatus = true
+											v.dataset.index = ii + 1
 
-								Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
-									//v.dataset.status = ""
-									delete v.dataset.status
-								})
+											v.dataset.status = "moved"
+										}
+									})
 
-							 	_this.value = "translate3d(" + (v.x - _this.left) + "px, " + (v.y - _this.top) + "px, 0)"
+									ii++
+								}
+							}
 
-							 	_this.index = v.index
+							Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
+								delete v.dataset.status
+							})
+
+							_this.value = "translate3d(" + (v.x - _this.left) + "px, " + (v.y - _this.top) + "px, 0)"
+
+							_this.index = v.index
 						}
 					}
 				})
 			},
-			dragEnd: function (e) {
-				
-			}
 		},
 		directives: {
 			render: function () {
