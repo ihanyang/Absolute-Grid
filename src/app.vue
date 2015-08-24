@@ -9,7 +9,6 @@
 			<input type="text" class="filter" placeholder="filter eg: login" v-model="filterValue" />
 			<input type="range" min="0.5" max="1.5" step="0.1" v-model="range" />
 		</div>
-		<!-- <h2 v-text="range"></h2> -->
 		<grid filter-text="{{filterValue}}" range-value="{{range}}"></grid>
 	</div>
 </template>
