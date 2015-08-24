@@ -1,0 +1,63 @@
+body {
+	font-family: "冬青黑体简体中文";
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+
+.wrap {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+.title {
+	color: #00489F;
+	font-size: 50px;
+	text-align: center;
+}
+.desc, .operation {
+	text-align: center;
+}
+.filter {
+	padding: 8px;
+	outline: none;
+	color: #333;
+	font-weight: bold;
+	border-radius: 3px;
+	border: 1px solid #CCC;
+	box-shadow: 0 1px 3px #EEE;
+}
+.filter:focus {
+	border-color: #129FEA;
+}
+
+.grid-wrap {
+	width: 100%;
+	padding: 20px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.grid {
+	position: relative;
+}
+.grid-item {
+	cursor: move;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.grid-item-start {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100
+}
+.grid-text {
+	width: 100%;
+	position: absolute;
+	bottom: -25px;
+	color: #555;
+	font-size: 12px;
+	text-align: center;
+	text-transform: capitalize;
+}
