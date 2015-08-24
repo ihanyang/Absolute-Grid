@@ -53,32 +53,32 @@ server.listen(process.env.PORT || 1314)
 console.log("server running at http://localhost:1314")
 
 
-var list = fs.readdirSync(path.join(root, "/images"))
+// var list = fs.readdirSync(path.join(root, "/images"))
 
-var getStr = function () {
-    var length = Math.floor(Math.random() * 7 + 2)
-    var str = ""
-    var abc = "abcdefghijklmnopqrstuvwxyz".split("")
+// var getStr = function () {
+//     var length = Math.floor(Math.random() * 7 + 2)
+//     var str = ""
+//     var abc = "abcdefghijklmnopqrstuvwxyz".split("")
 
-    while(length) {
-        str += abc[Math.floor(Math.random() * 26)];
-        length = length - 1;
-    }
+//     while(length) {
+//         str += abc[Math.floor(Math.random() * 26)];
+//         length = length - 1;
+//     }
 
-    return str
-}
+//     return str
+// }
 
-var a = list.map(function (v, i) {
-    var str = getStr()
+// var a = list.map(function (v, i) {
+//     var str = getStr()
 
-    var obj = {
-        url: "http://localhost:1314/images/" + v,
-        index: i,
-        name: str
-    }
+//     var obj = {
+//         url: "/images/" + v,
+//         index: i,
+//         name: str
+//     }
 
-    return obj
-})
+//     return obj
+// })
 
-fs.writeFile("data.json", JSON.stringify(a))
+// fs.writeFile("data.json", JSON.stringify(a))
 
