@@ -1,12 +1,12 @@
 {
-  "name": "grid",
+  "name": "Absolute-Grid",
   "version": "1.0.0",
-  "description": "vue.js",
+  "description": "vue.js 版 Absolute Grid",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "hanyang",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.15.6",
