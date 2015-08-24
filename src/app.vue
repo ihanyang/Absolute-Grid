@@ -2,8 +2,8 @@
 	<div class="wrap">
 		<h1 class="title">Absolute Grid</h1>
 		<p class="desc">
-			Sortable, filterable, zoomable, ReactJS grid component using an absolute transform3d layout for React 0.13.x and ES6.
-			<a href="#">Read more here</a>
+			Sortable, filterable, zoomable, grid component using an absolute transform3d layout for Vue.js.
+			<a href="https://github.com/ihanyang/Absolute-Grid" target="_blank">Read more here</a>
 		</p>
 		<div class="operation">
 			<input type="text" class="filter" placeholder="filter eg: login" v-model="filterValue" />
