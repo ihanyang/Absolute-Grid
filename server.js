@@ -1,52 +1,55 @@
-var http = require("http"),
-    fs = require("fs"),
-    querystring = require("querystring"),
-    mime = require("mime"),
-    url = require("url"),
-    path = require("path"),
-    root = __dirname,
-    server = http.createServer(function (req, res) {
-        show(req, res)
-    }),
-    show = function (req, res) {
-        var FilePath = url.parse(req.url).pathname === "/" ? path.join(root, "/index.html") : path.join(root, url.parse(req.url).pathname)
+var http = require("http")
+var fs = require("fs")
+var querystring = require("querystring")
+var mime = require("mime")
+var url = require("url")
+var path = require("path")
+var root = __dirname
 
-        if (url.parse(req.url).pathname === "/api") {
-            FilePath = path.join(root, "/data.json")
-        }
-        
-        var stream = fs.createReadStream(FilePath)
+var server = http.createServer(function (req, res) {
+	render(req, res)
+})
 
-        stream.on("error", function (error) {
-            if (error.code === "ENOENT") {
-                res.writeHead(404, {
-                    "Content-Type": "text/html"
-                })
+var render = function(req, res) {
+	var FilePath = url.parse(req.url).pathname === "/" ? path.join(root, "/index.html") : path.join(root, url.parse(req.url).pathname)
 
-                res.write("<h1>404 Not Found</h1>")
+	if (url.parse(req.url).pathname === "/api") {
+		FilePath = path.join(root, "/data.json")
+	}
 
-                res.end()  
-            } else {
-                res.statusCode = 500
+	var stream = fs.createReadStream(FilePath)
 
-                res.end("server error")
-            }
+	stream.on("error", function(error) {
+		if (error.code === "ENOENT") {
+			res.writeHead(404, {
+				"Content-Type": "text/html"
+			})
 
-            console.log(error)
-            
-        })
+			res.write("<h1>404 Not Found</h1>")
 
-        fs.stat(FilePath, function (error, stat) {
-            if (! error) {
-                res.writeHead(200, {
-                    "Content-Length": stat.size,
-                    "Content-Type": mime.lookup(FilePath)
-                })
+			res.end()
+		} else {
+			res.statusCode = 500
 
-                stream.pipe(res)
-            }
-        })
-    }
+			res.end("server error")
+		}
+
+		console.log(error)
+
+	})
+
+	fs.stat(FilePath, function(error, stat) {
+		if (! error) {
+			res.writeHead(200, {
+				"Content-Length": stat.size,
+				"Content-Type": mime.lookup(FilePath)
+			})
+
+			stream.pipe(res)
+		}
+	})
+}
+
 
 server.listen(process.env.PORT || 1314)
 
@@ -56,28 +59,28 @@ console.log("server running at http://localhost:1314")
 // var list = fs.readdirSync(path.join(root, "/images"))
 
 // var getStr = function () {
-//     var length = Math.floor(Math.random() * 7 + 2)
-//     var str = ""
-//     var abc = "abcdefghijklmnopqrstuvwxyz".split("")
+//	 var length = Math.floor(Math.random() * 7 + 2)
+//	 var str = ""
+//	 var abc = "abcdefghijklmnopqrstuvwxyz".split("")
 
-//     while(length) {
-//         str += abc[Math.floor(Math.random() * 26)];
-//         length = length - 1;
-//     }
+//	 while(length) {
+//		 str += abc[Math.floor(Math.random() * 26)];
+//		 length = length - 1;
+//	 }
 
-//     return str
+//	 return str
 // }
 
 // var a = list.map(function (v, i) {
-//     var str = getStr()
+//	 var str = getStr()
 
-//     var obj = {
-//         url: "/images/" + v,
-//         index: i,
-//         name: str
-//     }
+//	 var obj = {
+//		 url: "/images/" + v,
+//		 index: i,
+//		 name: str
+//	 }
 
-//     return obj
+//	 return obj
 // })
 
 // fs.writeFile("data.json", JSON.stringify(a))
