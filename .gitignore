@@ -1,6 +1,6 @@
 # npm-debug
-/npm-debug.log
+npm-debug.log
 
 #输出目录 和 npm 包
-/dist
-/node_modules
+dist/
+node_modules/
