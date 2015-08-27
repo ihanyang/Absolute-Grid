@@ -3,4 +3,5 @@ An absolute layout grid with animations, filtering, zooming, and drag and drop s
 
 ###感受一下
 * `npm install`<br>
-* `npm start`
+* `npm start`<br>
+* `输入 http://localhost:8080 访问`
