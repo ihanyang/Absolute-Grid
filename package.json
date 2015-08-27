@@ -1,9 +1,10 @@
 {
   "name": "Absolute-Grid",
   "version": "1.0.0",
-  "description": "vue.js 版 Absolute Grid",
+  "description": "An write absolute grid with vue.js example",
   "main": "index.js",
   "scripts": {
+    "start": "webpack && webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "hanyang",
