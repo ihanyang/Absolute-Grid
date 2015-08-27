@@ -3,4 +3,4 @@ An absolute layout grid with animations, filtering, zooming, and drag and drop s
 
 ###感受一下
 * `npm install`<br>
-* `node server`
+* `npm start`
