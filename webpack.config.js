@@ -29,5 +29,5 @@ module.exports = {
 	plugins: [
 		new ExtractTextPlugin("app.css")
 	],
-	devtool: "source-map"
+	devtool: false
 }

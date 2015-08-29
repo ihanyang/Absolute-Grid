@@ -5,6 +5,7 @@
 			Sortable, filterable, zoomable, grid component using an absolute transform3d layout for Vue.js.
 			<a href="https://github.com/ihanyang/Absolute-Grid" target="_blank">Read more here</a>
 		</p>
+		<iframe src="https://ghbtns.com/github-btn.html?user=ihanyang&repo=Absolute-Grid&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 		<div class="operation">
 			<input type="text" class="filter" placeholder="filter eg: login" v-model="filterValue" />
 			<input type="range" min="0.5" max="1.5" step="0.1" v-model="range" />
