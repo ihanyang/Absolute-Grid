@@ -9,20 +9,23 @@ body {
 .wrap {
 	max-width: 1100px;
 	margin: 0 auto;
+	text-align: center;
 }
 .title {
 	color: #00489F;
 	font-size: 50px;
-	text-align: center;
+	font-weight: normal;
 }
 .desc, .operation {
-	text-align: center;
+	margin: 20px 0;
+}
+.operation {
+	margin-bottom: 10px;
 }
 .filter {
 	padding: 8px;
 	outline: none;
 	color: #333;
-	font-weight: bold;
 	border-radius: 3px;
 	border: 1px solid #CCC;
 	box-shadow: 0 1px 3px #EEE;
@@ -55,6 +58,7 @@ body {
 .grid-text {
 	width: 100%;
 	position: absolute;
+	left: 0;
 	bottom: -25px;
 	color: #555;
 	font-size: 12px;
