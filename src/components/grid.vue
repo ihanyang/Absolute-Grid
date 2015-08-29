@@ -151,47 +151,47 @@
 						if ((Math.abs(currentX - v.x) <= (this.rangeValue * 161) * 1 / 2 && Math.abs(currentY - v.y) <= (this.rangeValue * 286) * 1 / 2)) {
 							ii = v.index
 
-								if (this.index < v.index) {
-									while (ii > this.index) {
+							if (this.index < v.index) {
+								while (ii > this.index) {
 										
-										Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
-											if (+ v.dataset.index === ii && ! v.dataset.status) {
-												v.style.transform = "translate3d(" + (this.position[ii - 1].x) + "px, " + (this.position[ii - 1].y) + "px, 0px)"
+									Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
+										if (+ v.dataset.index === ii && ! v.dataset.status) {
+											v.style.transform = "translate3d(" + (this.position[ii - 1].x) + "px, " + (this.position[ii - 1].y) + "px, 0px)"
 
-												v.dataset.index = ii - 1
+											v.dataset.index = ii - 1
 
-												v.dataset.status = "moved"
-											}
-										}.bind(this))
+											v.dataset.status = "moved"
+										}
+									}.bind(this))
 
-										ii--
-									}
-								} else {
-									while (ii < this.index) {
-										
-										Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
-											if (+ v.dataset.index === ii && ! v.dataset.status) {
-												v.style.transform = "translate3d(" + (this.position[ii + 1].x) + "px, " + (this.position[ii + 1].y) + "px, 0px)"
-
-												v.dataset.index = ii + 1
-
-												v.dataset.status = "moved"
-											}
-										}.bind(this))
-
-										ii++
-									}
+									ii--
 								}
+							} else {
+								while (ii < this.index) {
+										
+									Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
+										if (+ v.dataset.index === ii && ! v.dataset.status) {
+											v.style.transform = "translate3d(" + (this.position[ii + 1].x) + "px, " + (this.position[ii + 1].y) + "px, 0px)"
 
-								Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
-									delete v.dataset.status
-								})
+											v.dataset.index = ii + 1
 
-							 	this.value = "translate3d(" + v.x + "px, " + v.y + "px, 0)"
+											v.dataset.status = "moved"
+										}
+									}.bind(this))
 
-							 	this.dragTarget.$el.dataset.index = v.index
+									ii++
+								}
+							}
 
-							 	this.index = v.index
+							Array.prototype.slice.call(document.querySelectorAll(".grid-item")).forEach(function (v, i) {
+								delete v.dataset.status
+							})
+
+							this.value = "translate3d(" + v.x + "px, " + v.y + "px, 0)"
+
+							this.dragTarget.$el.dataset.index = v.index
+
+							this.index = v.index
 						}
 					}
 				}.bind(this))
