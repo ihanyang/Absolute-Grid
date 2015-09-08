@@ -8,4 +8,4 @@ An absolute layout grid with animations, filtering, zooming, and drag and drop s
 * 
 
 
-[GitHub](http://github.com)ead.
+[GitHub](http://github.com)
