@@ -5,13 +5,3 @@ An absolute layout grid with animations, filtering, zooming, and drag and drop s
 * `npm install`<br>
 * `npm start`<br>
 * `输入 http://localhost:8080 访问`
-* 
-
-
-*This text will be italic*
-_This will also be italic_
-
-**This text will be bold**
-__This will also be bold__
-
-*You **can** combine them*
