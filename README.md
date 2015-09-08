@@ -8,5 +8,4 @@ An absolute layout grid with animations, filtering, zooming, and drag and drop s
 * 
 
 
-I think you should use an
-`<addr>` element here instead.
+[GitHub](http://github.com)ead.
