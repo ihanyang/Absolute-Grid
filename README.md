@@ -1,6 +1,5 @@
 # Absolute-Grid
-Vue.js 版的 Absolute Grid 
-######<a href="http://ihanyang.github.io/demo/vue/grid/" target="_blank">demo</a> 
+Vue.js 版的 Absolute Grid <a href="http://ihanyang.github.io/demo/vue/grid/" target="_blank">demo</a> 
 ######[原版](https://github.com/jrowny/react-absolute-grid/)
 
 ###感受一下
