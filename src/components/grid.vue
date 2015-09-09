@@ -69,8 +69,8 @@
 
 				this.rows = Math.ceil(document.querySelectorAll(".grid-item").length / (Math.floor(this.availWidth / (this.rangeValue * 161))))
 			},
-			availWidth: function () {
-				this.updatePosition()
+			availWidth: function (n, v) {
+				v !== 0 && this.updatePosition()
 			}
 		},
 		methods: {
@@ -110,11 +110,18 @@
 
 					v.style.transform = "translate3d(" + x + ", " + y + ", 0)"
 
-					this.position.push({
-						x: ~~ x.replace("px", ""),
-						y: ~~ y.replace("px", ""),
+					// this.position.push({
+					// 	x: ~~ x.replace("px", ""),
+					// 	y: ~~ y.replace("px", ""),
+					// 	index: + v.dataset.index
+					// })
+				
+					this.position[+ v.dataset.index] = {
+						x: parseInt(x),
+						y: parseInt(y),
 						index: + v.dataset.index
-					})
+					}
+
 				}.bind(this))
 			},
 			dragStart: function (e, vm) {
@@ -237,14 +244,14 @@
 			"drag-start": function (value) {
 				if (value) {
 					this.el.style.transition = "none"
-					this.el.style["pointer-events"] = "none"
+					//this.el.style["pointer-events"] = "none"
 					
 					this.vm.$parent.value = this.el.style.transform
 				}
 			},
 			"drag-end": function (value) {
 				if (value && this.vm === this.vm.$parent.dragTarget) {
-					this.el.style.cssText = this.el.style.cssText.replace(/\spointer.+1000;/, "")
+					this.el.style.cssText = this.el.style.cssText.replace(/\sposition.+1000;/, "")
 
 					this.el.style.position = "absolute"
 
