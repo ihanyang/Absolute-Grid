@@ -1,7 +1,7 @@
 <template>
 	<div class="grid-wrap">
 		<div class="grid" v-style="height: rows * (rangeValue * 286 + 42)  - 42 + 'px';">
-			<div class="grid-item" style="background-image: url({{data.url}});" data-index="{{$index}}" v-style="width: rangeValue * 161 + 'px', height: rangeValue * 161 * 286 / 161 + 'px'" v-render="rangeValue" v-repeat="data in lists | filterBy filterText in 'name'" v-on="mousedown: dragStart($event, this)" v-drag-start="this === dragTarget" v-drag-end="dragEndStatus">
+			<div class="grid-item" style="background-image: url({{data.url}});" data-index="{{$index}}" v-style="width: rangeValue * 161 + 'px', height: rangeValue * 161 * 286 / 161 + 'px'" v-render="rangeValue" v-repeat="data in lists" v-on="mousedown: dragStart($event, this)" v-drag-start="this === dragTarget" v-drag-end="dragEndStatus">
 				<span class="grid-text" v-text="data.name"></span>
 			</div>
 		</div>
@@ -16,6 +16,7 @@
 		data: function () {
 			return {
 				lists: require("../data.json"),
+				list: require("../data.json"),
 				position: [],
 				offsetX: 0,
 				offsetY: 0,
@@ -59,6 +60,11 @@
 				this.updatePosition()
 			},
 			"filterText": function (value) {
+				// 不用 filterBy
+				this.lists = this.list.filter(function (v) {
+					return v.name.indexOf(value) !== -1
+				})
+
 				this.updatePosition()
 
 				this.rows = Math.ceil(document.querySelectorAll(".grid-item").length / (Math.floor(this.availWidth / (this.rangeValue * 161))))

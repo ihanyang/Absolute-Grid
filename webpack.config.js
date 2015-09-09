@@ -1,7 +1,7 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
-	entry: "./src/app.js",
+	entry: ["./src/app.js"],
 	output: {
 		path: __dirname + "/dist",
 		filename: "build.js"
@@ -29,5 +29,5 @@ module.exports = {
 	plugins: [
 		new ExtractTextPlugin("app.css")
 	],
-	devtool: false
+	devtool: "source-map"
 }
